@@ -203,8 +203,9 @@ const UserDashboard = () => {
 
                     <Button
                       className="w-full bg-blue-600 hover:bg-blue-700"
-                      onClick={() => {
-                        const params = new URLSearchParams({ course: JSON.stringify(course) });
+onClick={() => {
+                        const courseWithEnrolled = { ...course, enrolled: true };
+                        const params = new URLSearchParams({ course: JSON.stringify(courseWithEnrolled) });
                         router.push(`/coursedetail/${course.id}?${params.toString()}`);
                       }}
                     >

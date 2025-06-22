@@ -80,7 +80,7 @@ const CourseDetailPage = () => {
 
         <Button 
           variant="ghost" 
-          onClick={() => router.push('/courses')}
+          onClick={() => router.push('/userdashboard')}
           className="text-slate-300 hover:text-white mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
