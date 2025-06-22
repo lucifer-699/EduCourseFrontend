@@ -14,7 +14,10 @@ const nextConfig = {
       '@': path.resolve(__dirname, './src'),
     };
     return config;
-  }
+  },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 };
 
 export default nextConfig;

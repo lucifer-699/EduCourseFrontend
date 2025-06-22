@@ -25,7 +25,7 @@ const AdminLogin = () => {
     e.preventDefault();
     // TODO: Implement actual admin login logic
     console.log('Admin login attempt:', { email, password });
-    router.push('/admin/dashboard'); // Next.js navigation
+    router.push('/admin/login'); // Next.js navigation
   };
 
   return (

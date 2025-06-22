@@ -16,7 +16,7 @@ interface Lesson {
   completed?: boolean;
 }
 
-interface Module {
+interface ModuleType {
   id: number;
   title: string;
   coverImage?: string;
@@ -26,7 +26,7 @@ interface Module {
 interface Course {
   id: number;
   title: string;
-  modules: Module[];
+  modules: ModuleType[];
 }
 
 interface Props {
@@ -39,9 +39,9 @@ const LessonContentPage = ({ courses }: Props) => {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [quizSubmitted, setQuizSubmitted] = useState(false);
 
-  const course = courses.find(c => c.id === parseInt(courseId as string));
-  const module = course?.modules.find(m => m.id === parseInt(moduleId as string));
-  const lesson = module?.lessons.find(l => l.id === parseInt(lessonId as string));
+  const course = courses.find((c) => c.id === parseInt(courseId as string));
+  const module = course?.modules.find((m) => m.id === parseInt(moduleId as string));
+  const lesson = module?.lessons.find((l) => l.id === parseInt(lessonId as string));
 
   if (!course || !module || !lesson) {
     return (

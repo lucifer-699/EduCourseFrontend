@@ -13,7 +13,7 @@ interface Lesson {
   completed?: boolean;
 }
 
-interface Module {
+interface ModuleType {
   id: number;
   title: string;
   summary?: string;
@@ -24,7 +24,7 @@ interface Module {
 interface Course {
   id: number;
   title: string;
-  modules: Module[];
+  modules: ModuleType[];
 }
 
 interface Props {
@@ -35,8 +35,8 @@ const ModuleLessonsPage = ({ courses }: Props) => {
   const router = useRouter();
   const { courseId, moduleId } = useParams();
 
-  const course = courses.find(c => c.id === parseInt(courseId as string));
-  const module = course?.modules.find(m => m.id === parseInt(moduleId as string));
+  const course = courses.find((c) => c.id === parseInt(courseId as string));
+  const module = course?.modules.find((m) => m.id === parseInt(moduleId as string));
 
   if (!course || !module) {
     return (
@@ -106,7 +106,7 @@ const ModuleLessonsPage = ({ courses }: Props) => {
             </div>
             <div className="flex items-center">
               <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
-              {module.lessons.filter(lesson => lesson.completed).length} completed
+              {module.lessons.filter((lesson) => lesson.completed).length} completed
             </div>
           </div>
         </div>
@@ -176,10 +176,10 @@ const ModuleLessonsPage = ({ courses }: Props) => {
           <CardContent>
             <div className="flex items-center justify-between mb-4">
               <span className="text-slate-300">
-                {module.lessons.filter(lesson => lesson.completed).length} of {module.lessons.length} lessons completed
+                {module.lessons.filter((lesson) => lesson.completed).length} of {module.lessons.length} lessons completed
               </span>
               <span className="text-blue-400 font-semibold">
-                {Math.round((module.lessons.filter(lesson => lesson.completed).length / module.lessons.length) * 100)}%
+                {Math.round((module.lessons.filter((lesson) => lesson.completed).length / module.lessons.length) * 100)}%
               </span>
             </div>
 
@@ -200,6 +200,4 @@ const ModuleLessonsPage = ({ courses }: Props) => {
       </div>
     </div>
   );
-};
-
-export default ModuleLessonsPage;
+}
