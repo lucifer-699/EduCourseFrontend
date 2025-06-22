@@ -155,7 +155,7 @@ const UserDashboard = () => {
 
                     <Button
                       className="w-full bg-blue-600 hover:bg-blue-700"
-                      onClick={() => router.push(`/courses/${course.id}`)}
+                      onClick={() => router.push(`/coursedetail/${course.id}`)}
                     >
                       <PlayCircle className="w-4 h-4 mr-2" />
                       Continue Learning

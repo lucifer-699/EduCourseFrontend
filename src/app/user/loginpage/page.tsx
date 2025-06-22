@@ -1,4 +1,4 @@
-// app/user/loginpage/page.tsx
+
 'use client';
 
 import { useState } from 'react';
@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BookOpen, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
-
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +20,7 @@ const LoginPage = () => {
     // TODO: Implement actual login logic
     console.log('Login attempt:', { email, password });
     // Redirect to user dashboard
-    router.push('/user/dashboard');
+    router.push('/userdashboard');
   };
 
   return (

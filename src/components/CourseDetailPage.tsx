@@ -41,17 +41,20 @@ interface Props {
 
 const CourseDetailPage = ({ courses }: Props) => {
   const router = useRouter();
-  const params = useParams();
-  const courseId = useMemo(() => Number(params?.courseId), [params]);
+  const { courseId } = useParams();
+  const courseIdNumber = courseId ? Number(courseId) : undefined;
 
   const [course, setCourse] = useState<Course | undefined>(undefined);
 
   useEffect(() => {
     if (courses && courseId) {
-      const foundCourse = courses.find((c) => c.id === courseId);
+      const foundCourse = courses.find((c) => c.id === Number(courseId));
       setCourse(foundCourse);
     }
-  }, [courseId, courses]);
+  }, [courses, courseId]);
+
+
+
 
   if (!course) {
     return (
