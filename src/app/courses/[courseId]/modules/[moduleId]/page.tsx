@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, PlayCircle, FileText, HelpCircle, CheckCircle, Clock } from 'lucide-react';
+import Image from 'next/image';
 
 // Hardcoded data - replace with your actual data
 const courseData = {
@@ -15,7 +16,7 @@ const courseData = {
       id: 1,
       title: "Module 1: Introduction to React",
       summary: "Learn the basics of React and JSX",
-      coverImage: "/module1.jpg",
+      coverImage: "/placeholder.png",
       lessons: [
         { id: 1, title: "Introduction to React", type: "video", completed: true },
         { id: 2, title: "Components and Props", type: "text", completed: false },
@@ -67,11 +68,13 @@ export default function ModulePage() {
 
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
-            {module.coverImage && (
-              <img
+{module.coverImage && (
+<Image
                 src={module.coverImage}
                 alt={module.title}
-                className="w-16 h-16 rounded-lg object-cover"
+                width={64}
+                height={64}
+                style={{ width: '64px', height: '64px', borderRadius: '0.5rem', objectFit: 'cover' }}
               />
             )}
             <div>

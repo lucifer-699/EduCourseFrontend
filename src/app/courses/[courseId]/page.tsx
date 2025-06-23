@@ -45,7 +45,7 @@ const coursesData: Course[] = [
     id: 1,
     title: "React Development Mastery",
     description: "Master React from basics to advanced concepts",
-    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
+    thumbnail: "/placeholder.svg",
     instructor: "John Doe",
     duration: "12 weeks",
     students: 1245,
