@@ -90,10 +90,9 @@ const CoursesPage = ({ courses }: Props) => {
         {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCourses.map((course) => (
-            <Card
+<Card
               key={course.id}
               className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-              onClick={() => router.push(`/courses/${course.id}`)}
             >
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
@@ -148,7 +147,7 @@ const CoursesPage = ({ courses }: Props) => {
 
                 <div className="flex items-center justify-between">
                   <span className="text-2xl font-bold text-white">{course.price}</span>
-                  <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+<Button size="sm" className="bg-blue-600 hover:bg-blue-700" onClick={() => router.push(`/coursedetail/${course.id}`)}>
                     {course.enrolled ? 'Continue' : 'Enroll Now'}
                   </Button>
                 </div>

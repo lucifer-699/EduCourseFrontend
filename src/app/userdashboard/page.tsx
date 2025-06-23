@@ -241,10 +241,13 @@ onClick={() => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {availableCourses.map((course) => (
-                <Card
+<Card
                   key={course.id}
                   className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-                  onClick={() => router.push(`/courses/${course.id}`)}
+                  onClick={() => {
+                    const params = new URLSearchParams({ course: JSON.stringify(course) });
+                    router.push(`/coursedetail/${course.id}?${params.toString()}`);
+                  }}
                 >
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img 

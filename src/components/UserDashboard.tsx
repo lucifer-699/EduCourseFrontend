@@ -181,7 +181,7 @@ const UserDashboard = () => {
           </TabsContent>
 
           {/* Explore Courses */}
-          <TabsContent value="explore" className="space-y-6">
+<TabsContent value="explore" className="space-y-6">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-white mb-4">Explore New Courses</h2>
               <p className="text-slate-400">Discover courses to expand your skills</p>
@@ -192,14 +192,16 @@ const UserDashboard = () => {
                 <Card
                   key={course.id}
                   className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-                  onClick={() => router.push(`/courses/${course.id}`)}
                 >
                   <div className="relative overflow-hidden rounded-t-lg">
-                    <img 
-                      src={course.thumbnail} 
+                    <img
+                      src={course.thumbnail}
                       alt={course.title}
                       className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                      <PlayCircle className="w-16 h-16 text-white opacity-80" />
+                    </div>
                   </div>
 
                   <CardHeader>
@@ -211,28 +213,20 @@ const UserDashboard = () => {
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent>
-                    <div className="flex items-center justify-between text-sm text-slate-400 mb-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center">
-                          <Clock className="w-4 h-4 mr-1" />
-                          {course.duration}
-                        </div>
-                        <div className="flex items-center">
-                          <Users className="w-4 h-4 mr-1" />
-                          {course.students}
-                        </div>
-                      </div>
-                      <div className="flex items-center">
-                        <Star className="w-4 h-4 mr-1 fill-yellow-400 text-yellow-400" />
-                        {course.rating}
-                      </div>
+                  <CardContent className="p-6">
+                    <div className="text-center mb-6">
+                      <span className="text-3xl font-bold text-white">{course.price}</span>
                     </div>
 
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-white">{course.price}</span>
-                      <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                    <div className="space-y-4">
+<Button
+                        className="w-full bg-blue-600 hover:bg-blue-700"
+                        onClick={() => router.push(`/coursedetail/${course.id}`)}
+                      >
                         Enroll Now
+                      </Button>
+                      <Button variant="outline" className="w-full border-slate-600 text-slate-300">
+                        Add to Wishlist
                       </Button>
                     </div>
                   </CardContent>
