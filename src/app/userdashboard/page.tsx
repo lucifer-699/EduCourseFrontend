@@ -16,78 +16,27 @@ const UserDashboard = () => {
   const [activeTab, setActiveTab] = useState('enrolled');
   const router = useRouter();
 
+  // Hardcoded data - would normally come from an API
   const enrolledCourses = [
     {
       id: 1,
       title: "React Development Mastery",
       description: "Master React from basics to advanced concepts",
-      thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
+      thumbnail: "/react-course.jpg",
       instructor: "John Doe",
       duration: "12 weeks",
       progress: 65,
-      completed: 8,
-      total: 12,
-      lastAccessed: "2 days ago",
-      modules: [
-        {
-          id: 1,
-          title: "Module 1: Introduction to React",
-          summary: "Learn the basics of React and JSX",
-          coverImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
-          lessons: [
-            { completed: true },
-            { completed: false },
-            { completed: false }
-          ]
-        },
-        {
-          id: 2,
-          title: "Module 2: Components and Props",
-          summary: "Dive deeper into React components and props",
-          coverImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
-          lessons: [
-            { completed: true },
-            { completed: true },
-            { completed: false }
-          ]
-        }
-      ]
+      enrolled: true
     },
     {
       id: 3,
       title: "UI/UX Design Principles",
       description: "Master the art of user interface and experience design",
-      thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400",
+      thumbnail: "/uiux-course.jpg",
       instructor: "Alex Johnson",
       duration: "6 weeks",
       progress: 30,
-      completed: 3,
-      total: 10,
-      lastAccessed: "5 days ago",
-      modules: [
-        {
-          id: 3,
-          title: "Module 1: Introduction to UI/UX",
-          summary: "Learn the basics of UI/UX design",
-          coverImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400",
-          lessons: [
-            { completed: true },
-            { completed: false },
-            { completed: false }
-          ]
-        },
-        {
-          id: 4,
-          title: "Module 2: Design Principles",
-          summary: "Dive deeper into design principles",
-          coverImage: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400",
-          lessons: [
-            { completed: true },
-            { completed: true },
-            { completed: false }
-          ]
-        }
-      ]
+      enrolled: true
     }
   ];
 
@@ -96,7 +45,7 @@ const UserDashboard = () => {
       id: 2,
       title: "Python for Data Science",
       description: "Complete guide to Python programming for data analysis",
-      thumbnail: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=400",
+      thumbnail: "/python-course.jpg",
       instructor: "Jane Smith",
       duration: "8 weeks",
       students: 890,
@@ -107,23 +56,12 @@ const UserDashboard = () => {
       id: 4,
       title: "JavaScript Fundamentals",
       description: "Learn JavaScript from scratch to advanced concepts",
-      thumbnail: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400",
+      thumbnail: "/js-course.jpg",
       instructor: "Mike Wilson",
       duration: "10 weeks",
       students: 1450,
       rating: 4.6,
       price: "$89"
-    },
-    {
-      id: 5,
-      title: "Digital Marketing Mastery",
-      description: "Complete digital marketing course for beginners",
-      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400",
-      instructor: "Sarah Davis",
-      duration: "7 weeks",
-      students: 756,
-      rating: 4.8,
-      price: "$109"
     }
   ];
 
@@ -195,19 +133,11 @@ const UserDashboard = () => {
                         <span className="text-blue-400">{course.progress}%</span>
                       </div>
                       <Progress value={course.progress} className="h-2" />
-                      <div className="flex justify-between text-xs text-slate-400">
-                        <span>{course.completed} of {course.total} lessons completed</span>
-                        <span>Last accessed {course.lastAccessed}</span>
-                      </div>
                     </div>
 
                     <Button
                       className="w-full bg-blue-600 hover:bg-blue-700"
-onClick={() => {
-                        const courseWithEnrolled = { ...course, enrolled: true };
-                        const params = new URLSearchParams({ course: JSON.stringify(courseWithEnrolled) });
-                        router.push(`../courses/${course.id}?${params.toString()}`);
-                      }}
+                      onClick={() => router.push(`/courses/${course.id}`)}
                     >
                       <PlayCircle className="w-4 h-4 mr-2" />
                       Continue Learning
@@ -216,20 +146,6 @@ onClick={() => {
                 </Card>
               ))}
             </div>
-
-            {enrolledCourses.length === 0 && (
-              <div className="text-center py-12">
-                <BookOpen className="h-16 w-16 text-slate-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-white mb-2">No Enrolled Courses</h3>
-                <p className="text-slate-400 mb-6">Start your learning journey by exploring our courses</p>
-                <Button 
-                  className="bg-blue-600 hover:bg-blue-700"
-                  onClick={() => setActiveTab('explore')}
-                >
-                  Explore Courses
-                </Button>
-              </div>
-            )}
           </TabsContent>
 
           {/* Explore Courses */}
@@ -241,26 +157,21 @@ onClick={() => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {availableCourses.map((course) => (
-<Card
+                <Card
                   key={course.id}
-                  className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-                  onClick={() => {
-                    const params = new URLSearchParams({ course: JSON.stringify(course) });
-                    router.push(`/coursedetail/${course.id}?${params.toString()}`);
-                  }}
+                  className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer"
+                  onClick={() => router.push(`/courses/${course.id}`)}
                 >
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img 
                       src={course.thumbnail} 
                       alt={course.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-48 object-cover"
                     />
                   </div>
 
                   <CardHeader>
-                    <CardTitle className="text-white group-hover:text-blue-400 transition-colors">
-                      {course.title}
-                    </CardTitle>
+                    <CardTitle className="text-white">{course.title}</CardTitle>
                     <CardDescription className="text-slate-300">
                       {course.description}
                     </CardDescription>
