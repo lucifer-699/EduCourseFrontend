@@ -45,7 +45,7 @@ const coursesData: Course[] = [
     id: 1,
     title: "React Development Mastery",
     description: "Master React from basics to advanced concepts",
-    thumbnail: "/react-course.jpg",
+    thumbnail: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
     instructor: "John Doe",
     duration: "12 weeks",
     students: 1245,
@@ -58,7 +58,7 @@ const coursesData: Course[] = [
         id: 1,
         title: "Module 1: Introduction to React",
         summary: "Learn the basics of React and JSX",
-        coverImage: "/react-module1.jpg",
+        coverImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
         lessons: [
           { id: 1, title: "Introduction to React", type: "video", completed: true },
           { id: 2, title: "Components and Props", type: "text", completed: false },
@@ -68,7 +68,7 @@ const coursesData: Course[] = [
         id: 2,
         title: "Module 2: Advanced Concepts",
         summary: "Dive deeper into React patterns",
-        coverImage: "/react-module2.jpg",
+        coverImage: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
         lessons: [
           { id: 3, title: "State Management", type: "video", completed: false },
           { id: 4, title: "Performance Optimization", type: "text", completed: false },
