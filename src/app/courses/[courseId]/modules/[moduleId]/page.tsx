@@ -1,57 +1,50 @@
 'use client';
 
-import { useRouter, useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, PlayCircle, FileText, HelpCircle, CheckCircle, Clock } from 'lucide-react';
 
-interface Lesson {
-  id: number;
-  title: string;
-  type: 'video' | 'text' | 'quiz';
-  completed?: boolean;
-}
+// Hardcoded data - replace with your actual data
+const courseData = {
+  id: 1,
+  title: "React Development Mastery",
+  modules: [
+    {
+      id: 1,
+      title: "Module 1: Introduction to React",
+      summary: "Learn the basics of React and JSX",
+      coverImage: "/module1.jpg",
+      lessons: [
+        { id: 1, title: "Introduction to React", type: "video", completed: true },
+        { id: 2, title: "Components and Props", type: "text", completed: false },
+      ]
+    }
+  ]
+};
 
-interface ModuleType {
-  id: number;
-  title: string;
-  summary?: string;
-  coverImage?: string;
-  lessons: Lesson[];
-}
-
-interface Course {
-  id: number;
-  title: string;
-  modules: ModuleType[];
-}
-
-interface Props {
-  courses: Course[];
-}
-
-const ModuleLessonsPage = ({ courses }: Props) => {
-  const router = useRouter();
+export default function ModulePage() {
   const { courseId, moduleId } = useParams();
+  const router = useRouter();
 
-  const course = courses.find((c) => c.id === parseInt(courseId as string));
-  const module = course?.modules.find((m) => m.id === parseInt(moduleId as string));
+  const module = courseData.modules.find(m => m.id === Number(moduleId));
+  const course = courseData;
 
-  if (!course || !module) {
+  if (!module) {
     return (
       <div className="min-h-screen bg-slate-900 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">Module Not Found</h1>
-          <Button onClick={() => router.push('/courses')} className="bg-blue-600 hover:bg-blue-700">
-            Back to Courses
+          <Button onClick={() => router.push(`/courses/${courseId}`)} className="bg-blue-600 hover:bg-blue-700">
+            Back to Course
           </Button>
         </div>
       </div>
     );
   }
 
-  const getTypeIcon = (type: Lesson['type']) => {
+  const getTypeIcon = (type: string) => {
     switch (type) {
       case 'video': return <PlayCircle className="w-5 h-5 text-blue-400" />;
       case 'text': return <FileText className="w-5 h-5 text-green-400" />;
@@ -60,19 +53,9 @@ const ModuleLessonsPage = ({ courses }: Props) => {
     }
   };
 
-  const getTypeBadge = (type: Lesson['type']) => {
-    const colors = {
-      video: 'bg-blue-600',
-      text: 'bg-green-600',
-      quiz: 'bg-purple-600'
-    };
-    return colors[type] || 'bg-slate-600';
-  };
-
   return (
     <div className="min-h-screen bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Back Button */}
         <Button
           variant="ghost"
           onClick={() => router.push(`/courses/${courseId}`)}
@@ -82,7 +65,6 @@ const ModuleLessonsPage = ({ courses }: Props) => {
           Back to Course
         </Button>
 
-        {/* Module Header */}
         <div className="mb-8">
           <div className="flex items-center gap-4 mb-4">
             {module.coverImage && (
@@ -106,12 +88,11 @@ const ModuleLessonsPage = ({ courses }: Props) => {
             </div>
             <div className="flex items-center">
               <CheckCircle className="w-4 h-4 mr-2 text-green-400" />
-              {module.lessons.filter((lesson) => lesson.completed).length} completed
+              {module.lessons.filter(lesson => lesson.completed).length} completed
             </div>
           </div>
         </div>
 
-        {/* Lessons List */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-white mb-4">Lessons</h2>
 
@@ -140,7 +121,11 @@ const ModuleLessonsPage = ({ courses }: Props) => {
                         <h3 className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors">
                           {lesson.title}
                         </h3>
-                        <Badge className={`${getTypeBadge(lesson.type)} text-white text-xs`}>
+                        <Badge className={`${
+                          lesson.type === 'video' ? 'bg-blue-600' :
+                          lesson.type === 'text' ? 'bg-green-600' :
+                          'bg-purple-600'
+                        } text-white text-xs`}>
                           {lesson.type}
                         </Badge>
                       </div>
@@ -167,36 +152,6 @@ const ModuleLessonsPage = ({ courses }: Props) => {
             </Card>
           ))}
         </div>
-
-        {/* Module Summary */}
-        <Card className="mt-8 bg-slate-800 border-slate-700">
-          <CardHeader>
-            <CardTitle className="text-white">Module Progress</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-slate-300">
-                {module.lessons.filter((lesson) => lesson.completed).length} of {module.lessons.length} lessons completed
-              </span>
-              <span className="text-blue-400 font-semibold">
-                {Math.round((module.lessons.filter((lesson) => lesson.completed).length / module.lessons.length) * 100)}%
-              </span>
-            </div>
-
-            <div className="flex space-x-2">
-              <Button
-                variant="outline"
-                className="border-slate-600 text-slate-300"
-                onClick={() => router.push(`/courses/${courseId}`)}
-              >
-                Back to Course
-              </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                Continue Learning
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );

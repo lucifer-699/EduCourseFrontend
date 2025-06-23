@@ -174,11 +174,10 @@ const CourseDetailPage = ({ courses }: Props) => {
           <h2 className="text-2xl font-bold text-white mb-6">Course Modules</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {course.modules.map((module, index) => (
-              <Card 
-                key={module.id} 
-                className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-                onClick={() => router.push(`/courses/${courseId}/modules/${module.id}`)}
-              >
+<Card 
+  key={module.id} 
+  className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
+>
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img 
                     src={module.coverImage} 
@@ -210,9 +209,15 @@ const CourseDetailPage = ({ courses }: Props) => {
                     </div>
                   </div>
 
-                  <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
-                    {course.enrolled ? 'Start Module' : 'Preview'}
-                  </Button>
+<Button 
+  size="sm" 
+  className="w-full bg-blue-600 hover:bg-blue-700"
+onClick={() => {
+  router.push(`/courses/module-lessons?courseId=${courseId}&moduleId=${module.id}`);
+}}
+>
+  {course.enrolled ? 'Start Module' : 'Preview'}
+</Button>
                 </CardContent>
               </Card>
             ))}

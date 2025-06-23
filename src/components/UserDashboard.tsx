@@ -220,11 +220,11 @@ const UserDashboard = () => {
 
                     <div className="space-y-4">
 <Button
-                        className="w-full bg-blue-600 hover:bg-blue-700"
-                        onClick={() => router.push(`/coursedetail/${course.id}`)}
-                      >
-                        Enroll Now
-                      </Button>
+  className="w-full bg-blue-600 hover:bg-blue-700"
+  onClick={() => router.push(`/coursedetail/${course.id}`)}
+>
+  Enroll Now
+</Button>
                       <Button variant="outline" className="w-full border-slate-600 text-slate-300">
                         Add to Wishlist
                       </Button>

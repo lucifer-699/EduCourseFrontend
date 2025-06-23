@@ -70,7 +70,7 @@ const CourseDetailPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Button
             variant="ghost"
-            onClick={() => router.push('/userdashboard')}
+            onClick={() => router.push('./page.tsx')}
             className="text-slate-300 hover:text-white mb-6"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
@@ -167,7 +167,7 @@ const CourseDetailPage = () => {
                 <Card
                   key={module.id}
                   className="bg-slate-800 border-slate-700 hover:bg-slate-700 transition-all duration-300 cursor-pointer group"
-                  onClick={() => router.push(`/courses/${courseId}/modules/${module.id}`)}
+onClick={() => router.push(`/courses/${courseId}/modules/${module.id}`)}
                 >
                   <div className="relative overflow-hidden rounded-t-lg">
                     <img
@@ -200,9 +200,13 @@ const CourseDetailPage = () => {
                     </div>
                   </div>
 
-                  <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700">
-                    {course?.enrolled ? 'Start Module' : 'Preview'}
-                  </Button>
+<Button
+  size="sm"
+  className="w-full bg-blue-600 hover:bg-blue-700"
+onClick={() => router.push(`/courses/${courseId}/modules/${module.id}`)}
+>
+  {course?.enrolled ? 'Start Module' : 'Preview'}
+</Button>
                 </CardContent>
               </Card>
             ))}

@@ -206,7 +206,7 @@ const UserDashboard = () => {
 onClick={() => {
                         const courseWithEnrolled = { ...course, enrolled: true };
                         const params = new URLSearchParams({ course: JSON.stringify(courseWithEnrolled) });
-                        router.push(`/coursedetail/${course.id}?${params.toString()}`);
+                        router.push(`../courses/${course.id}?${params.toString()}`);
                       }}
                     >
                       <PlayCircle className="w-4 h-4 mr-2" />
