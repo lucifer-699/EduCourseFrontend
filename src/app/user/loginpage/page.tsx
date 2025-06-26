@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -32,12 +31,12 @@ const LoginPage = () => {
             <span className="text-2xl font-bold text-white">EduCourse</span>
           </Link>
           <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-          <p className="text-slate-400">Sign in to continue your learning journey</p>
+          <p className="text-slate-400">Log in to continue your learning journey</p>
         </div>
 
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader>
-            <CardTitle className="text-white">Sign In</CardTitle>
+            <CardTitle className="text-white">Log In</CardTitle>
             <CardDescription className="text-slate-400">
               Enter your credentials to access your account
             </CardDescription>
@@ -80,15 +79,15 @@ const LoginPage = () => {
                 </div>
               </div>
               <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                Sign In
+                Log In
               </Button>
             </form>
             
             <div className="mt-6 text-center">
               <p className="text-slate-400">
-                Don&#39;t have an account?{' '}
-                <Link href="/signup" className="text-blue-400 hover:text-blue-300 font-medium">
-                  Sign up
+                Are you Admin ? 
+                <Link href="/admin/loginpage" className="text-blue-400 hover:text-blue-300 font-medium">
+                    Admin Login
                 </Link>
               </p>
             </div>

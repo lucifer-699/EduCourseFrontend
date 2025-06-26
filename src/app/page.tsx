@@ -75,7 +75,7 @@ const Navbar = () => {
               <Button variant="outline" size="sm" className="border-slate-600 text-slate-300" asChild>
                 <Link href="/user/loginpage">
                   <LogIn className="w-4 h-4 mr-2" />
-                  Sign In
+                  Log In
                 </Link>
               </Button>
             </div>

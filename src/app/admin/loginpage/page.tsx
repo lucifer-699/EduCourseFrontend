@@ -25,7 +25,7 @@ const AdminLogin = () => {
     e.preventDefault();
     // TODO: Implement actual admin login logic
     console.log('Admin login attempt:', { email, password });
-    router.push('/components/AdminDashboard'); // Next.js navigation
+    router.push('../../admindashboard'); // Next.js navigation
   };
 
   return (
@@ -40,12 +40,12 @@ const AdminLogin = () => {
             <Shield className="h-8 w-8 text-orange-400" />
             <h1 className="text-3xl font-bold text-white">Admin Portal</h1>
           </div>
-          <p className="text-slate-400">Sign in to access the admin dashboard</p>
+          <p className="text-slate-400">Log in to access the admin dashboard</p>
         </div>
 
         <Card className="bg-slate-800 border-slate-700">
           <CardHeader>
-            <CardTitle className="text-white">Admin Sign In</CardTitle>
+            <CardTitle className="text-white">Admin Log In</CardTitle>
             <CardDescription className="text-slate-400">
               Enter your admin credentials to continue
             </CardDescription>
@@ -88,7 +88,7 @@ const AdminLogin = () => {
                 </div>
               </div>
               <Button type="submit" className="w-full bg-orange-600 hover:bg-orange-700">
-                Sign In to Admin
+                Log In to Admin
               </Button>
             </form>
 
