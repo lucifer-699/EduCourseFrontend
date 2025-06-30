@@ -84,10 +84,10 @@ export default function LoginPage() {
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
             <GraduationCap className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">LMS Dashboard</span>
+            <span className="text-2xl font-bold">CodeMantra LLM</span>
           </div>
           <CardTitle className="text-2xl">Welcome back</CardTitle>
-          <CardDescription>Sign in to your account to continue learning</CardDescription>
+          <CardDescription>Log in to your account to continue learning</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -136,7 +136,7 @@ export default function LoginPage() {
             )}
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Signing in..." : "Sign in"}
+              {isLoading ? "logging in..." : "Logs in"}
             </Button>
           </form>
 
@@ -147,16 +147,9 @@ export default function LoginPage() {
                 <strong>Admin:</strong> admin@example.com / password
               </p>
               <p>
-                <strong>Student:</strong> john@example.com / password
+                <strong>Student:</strong> user@example.com / password
               </p>
             </div>
-          </div>
-
-          <div className="mt-4 text-center text-sm">
-            <span className="text-muted-foreground">Don't have an account? </span>
-            <Link href="/register" className="text-primary hover:underline">
-              Sign up
-            </Link>
           </div>
         </CardContent>
       </Card>

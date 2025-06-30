@@ -74,19 +74,19 @@ export function LandingPage() {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Sishir Shrestha",
       role: "Software Developer",
       content: "This LMS transformed how I learn new technologies. The progress tracking keeps me motivated!",
       rating: 5,
     },
     {
-      name: "Michael Chen",
+      name: "Sujan Rijal",
       role: "Product Manager",
       content: "The admin controls are fantastic. Managing our team's learning has never been easier.",
       rating: 5,
     },
     {
-      name: "Emily Davis",
+      name: "Anisha Gurung",
       role: "UX Designer",
       content: "Love the multimedia lessons and mobile experience. I can learn anywhere, anytime.",
       rating: 5,
@@ -101,7 +101,7 @@ export function LandingPage() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
               <GraduationCap className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">LMS Platform</span>
+              <span className="text-xl font-bold text-gray-900">CodeMantra Platform</span>
             </div>
             <div className="flex items-center gap-4">
               <Link href="/login">
@@ -119,7 +119,7 @@ export function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
@@ -288,7 +288,7 @@ export function LandingPage() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <GraduationCap className="h-6 w-6 text-blue-400" />
-                <span className="text-lg font-bold">LMS Platform</span>
+                <span className="text-lg font-bold">CodeMatra Platform</span>
               </div>
               <p className="text-gray-400">
                 Empowering learners worldwide with comprehensive online education solutions.
@@ -375,7 +375,7 @@ export function LandingPage() {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 LMS Platform. All rights reserved.</p>
+            <p>&copy; 2025 Sishir Shrestha. All rights reserved.</p>
           </div>
         </div>
       </footer>

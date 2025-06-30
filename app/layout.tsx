@@ -8,7 +8,7 @@ import { AuthProvider } from "@/components/auth-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "LMS Dashboard",
+  title: "CodeMantra Dashboard",
   description: "Modern Learning Management System",
 }
 

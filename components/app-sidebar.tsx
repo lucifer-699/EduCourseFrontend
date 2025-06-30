@@ -121,7 +121,7 @@ export function AppSidebar() {
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2 py-2">
           <GraduationCap className="h-6 w-6 text-primary" />
-          <span className="font-bold text-lg">LMS Dashboard</span>
+          <span className="font-bold text-lg">Dashboard</span>
         </div>
       </SidebarHeader>
       <SidebarContent>
@@ -196,7 +196,7 @@ export function AppSidebar() {
 
           <Button variant="ghost" onClick={handleLogout} className="w-full justify-start">
             <LogOut className="h-4 w-4 mr-2" />
-            Sign out
+            Log out
           </Button>
         </div>
       </SidebarFooter>
